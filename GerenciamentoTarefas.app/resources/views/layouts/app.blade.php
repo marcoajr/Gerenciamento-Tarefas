@@ -12,22 +12,42 @@
 
         <!-- Bootstrap CSS -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-
-        <!-- Scripts -->
+        <link rel="stylesheet" href="{{ asset('css/style.css')}}">
         
     </head>
+
     <body class="font-sans antialiased bg-light">
-        <div class="min-vh-100">
-            @include('layouts.navigation')
+        @auth
+        <div class="sidebar">
+            <h4>Menu do Administrador</h4>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#"> Dashboard </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"> Usuários </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"> Configurações </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"> Relátorios </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"> Sair </a>
+                </li>
+            </ul>
+        </div>
+        @endauth
+        
+        <div class="content">
+            
 
             <div class="container">
-                @yield('content') <!-- Onde o conteúdo das views será exibido -->
+                @include('layouts.navigation')
+                @yield('content') 
             </div>
 
-            <!-- Page Content -->
-            <main class="container my-4">
-            
-            </main>
         </div>
 
         <!-- Bootstrap JS Bundle with Popper -->
