@@ -22,6 +22,7 @@ Route::get('/', function () {
 });
 
 Route::get('/home',[home::class, 'index']);
+Route::get('/useradmin', [AdminUser::class, 'index']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');})
@@ -35,7 +36,4 @@ Route::get('/admin/dashboard', [AdminController::class, 'index'])
 Route::get('/register', [RegisteredUserController::class, 'create'])
     ->name('register');
 
-
-Route::get('/useradmin', [AdminUser::class, 'index']);
-
-require __DIR__.'/auth.php';
+    require __DIR__.'/auth.php';
