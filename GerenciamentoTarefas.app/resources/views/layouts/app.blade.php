@@ -17,38 +17,21 @@
     </head>
 
     <body class="font-sans antialiased bg-light">
-        @auth
-        <div class="sidebar">
-            <h4>Menu do Administrador</h4>
-            <ul class="nav flex-column">
-                <li class="nav-item">
-                    <a class="nav-link active" href="#"> Dashboard </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#"> Usuários </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#"> Configurações </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#"> Relátorios </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#"> Sair </a>
-                </li>
-            </ul>
-        </div>
-        @endauth
+        
+    @auth
+        @if(Auth::user()->role == 'admin')
+            @include('partials.adminmenu')
+        @endif
+    @endauth
         
         <div class="content">
-            
-
             <div class="container">
                 @include('layouts.navigation')
                 @yield('content') 
             </div>
-
         </div>
+        
+       
 
         <!-- Bootstrap JS Bundle with Popper -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.login.loginLayout')
 
 @section('content')
 
@@ -60,11 +60,6 @@
                 @if (Route::has('password.request'))
                   <a class="text-muted" href="{{ route('password.request') }}">{{ __('Esqueceu sua senha?') }}</a>
                 @endif
-              </div>
-
-              <div class="d-flex align-items-center justify-content-center pb-4">
-                <p class="mb-0 me-2">Não tem uma conta?</p>
-                <a type="button" href="{{ route('register') }}" class="btn btn-outline-danger">Cria Conta</a>
               </div>
             </form>
 

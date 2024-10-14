@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\AdminUser;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,10 +21,17 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+    return view('dashboard');})
+    ->middleware(['auth'])
+    ->name('dashboard');
+
+Route::get('/admin/dashboard', [AdminController::class, 'index'])
+    ->middleware(['auth', 'admin'])
+    ->name('admin.dashboard');
 
 Route::get('/register', [RegisteredUserController::class, 'create'])
-->name('register');
+    ->name('register');
+
+Route::get('/useradmin', [AdminUser::class, 'index']);
 
 require __DIR__.'/auth.php';

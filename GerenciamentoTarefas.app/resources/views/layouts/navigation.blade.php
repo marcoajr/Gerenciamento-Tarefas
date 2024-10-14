@@ -12,12 +12,14 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Left Side Of Navbar (Navigation Links) -->
+             
             <ul class="navbar-nav me-auto">
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->routeIs('dashboard') ? 'active' : '' }}" href="{{ route('dashboard') }}">{{ __('Dashboard') }}</a>
+                <a class="nav-link {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}" 
+                href="{{ route('admin.dashboard') }}">{{ __('Dashboard') }}</a>
                 </li>
             </ul>
-
+            
             <!-- Right Side Of Navbar (Settings Dropdown) -->
             <ul class="navbar-nav ms-auto">
                 @guest
@@ -33,16 +35,9 @@
                 @else
                     <!-- Authenticated User Dropdown -->
                     <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             {{ Auth::user()->name }}
                         </a>
-
-                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{ route('logout') }}"
-                               onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                {{ __('Log Out') }}
-                            </a>
-
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                 @csrf
                             </form>
