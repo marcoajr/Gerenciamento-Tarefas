@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AdminUser;
+use App\Http\Controllers\Home\Home;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,8 +18,10 @@ use App\Http\Controllers\Admin\AdminUser;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home.home');
 });
+
+Route::get('/home',[home::class, 'index']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');})
@@ -31,6 +34,7 @@ Route::get('/admin/dashboard', [AdminController::class, 'index'])
 
 Route::get('/register', [RegisteredUserController::class, 'create'])
     ->name('register');
+
 
 Route::get('/useradmin', [AdminUser::class, 'index']);
 
